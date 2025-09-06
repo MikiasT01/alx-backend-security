@@ -19,4 +19,6 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', login_view, name='login'),
+    path('login/anonymous/', login_view_anonymous, name='login_anonymous'),
 ]

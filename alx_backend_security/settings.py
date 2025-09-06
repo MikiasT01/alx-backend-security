@@ -65,6 +65,13 @@ LOGGING = {
     },
 }
 
+    # Rate limit configuration
+RATELIMIT_VIEW = 'ip_tracking.views.login_view'
+RATELIMIT_ENABLE = True
+RATELIMIT_RATE_AUTHENTICATED = '10/m'
+RATELIMIT_RATE_ANONYMOUS = '5/m'
+RATELIMIT_BLOCK = True
+
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
