@@ -82,6 +82,22 @@ CACHES = {
     }
 }
 
+# Celery Configuration
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/0'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+# Celery Beat Configuration
+CELERY_BEAT_SCHEDULE = {
+    'detect-anomalies-every-hour': {
+        'task': 'ip_tracking.tasks.detect_anomalies',
+        'schedule': crontab(minute=0),  # Run every hour at minute 0
+    },
+}
+
 ROOT_URLCONF = 'alx_backend_security.urls'
 
 TEMPLATES = [
